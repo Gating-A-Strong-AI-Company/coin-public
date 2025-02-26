@@ -1,8 +1,38 @@
 {
-  "name": "GatingAI Token",
-  "symbol": "GATAI",
-  "image": "https://raw.githubusercontent.com/Gating-A-Strong-AI-Company/coin-public/refs/heads/main/image.png",
-  "description": "GatingAI Token (GATAI) is the native token of Gating.ai, representing the next generation of AI technology designed to replace deep learning with innovative gating mechanisms.",
-  "decimals": 6,
-  "external_url": "https://gating.ai"
+    "name": "GatingAI Token",
+    "symbol": "GATAI",
+    "description": "Official token of GatingAI project",
+    "image": "ipfs://bafkreifia7pwfaaxswewevtxr3z7retshb4ubvx7xuaaplmdi7puw2u4si",
+    "external_url": "https://gatingai.com",
+    "attributes": [
+        {
+            "trait_type": "Category",
+            "value": "Utility Token"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "1"
+        }
+    ],
+    "properties": {
+        "files": [
+            {
+                "uri": "ipfs://bafkreifia7pwfaaxswewevtxr3z7retshb4ubvx7xuaaplmdi7puw2u4si",
+                "type": "image/png",
+                "cdn": false
+            }
+        ],
+        "category": "token",
+        "creators": [
+            {
+                "address": "B9rzAwp28tvhURqjv12XvdT1oqbcnhAi72Ar39WQVQ8R",
+                "share": 100,
+                "verified": true
+            }
+        ]
+    },
+    "collection": {
+        "name": "GatingAI",
+        "family": "Platform Tokens"
+    }
 }
