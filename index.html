@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatingAI Token (GATAI) - Official Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --secondary: #7C3AED;
+            --accent: #8B5CF6;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --background: #F9FAFB;
+            --card: #FFFFFF;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .token-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background-color: var(--card);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 0.75rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .info-item {
+            background-color: var(--background);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-value {
+            font-weight: 500;
+            font-size: 1rem;
+            word-break: break-all;
+        }
+        
+        .supply-card {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .supply-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .supply-card .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background-color: var(--background);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+        
+        .links-list li i {
+            margin-right: 0.75rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .link-desc {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .address {
+            font-family: monospace;
+            font-size: 0.9rem;
+            background-color: var(--background);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            word-break: break-all;
+        }
+        
+        .command-section {
+            background-color: #1F2937;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .command {
+            font-family: monospace;
+            background-color: #111827;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .command-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #E5E7EB;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .token-icon {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://raw.githubusercontent.com/Gating-A-Strong-AI-Company/coin-public/main/image_small.png" alt="GatingAI Token" class="token-icon">
+            <h1>GatingAI Token (GATAI)</h1>
+            <p class="subtitle">Official Token Report</p>
+            <div class="status-badge">Active on Mainnet</div>
+        </header>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Token Information</h2>
+            
+            <div class="supply-card">
+                <div>
+                    <div class="label">Total Supply</div>
+                    <div class="value">1,000,000 GATAI</div>
+                </div>
+                <i class="fas fa-coins" style="font-size: 3rem; opacity: 0.5;"></i>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Token Name</div>
+                    <div class="info-value">GatingAI Token</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Symbol</div>
+                    <div class="info-value">GATAI</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Decimals</div>
+                    <div class="info-value">6</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Program ID</div>
+                    <div class="info-value address">TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Token Address</div>
+                    <div class="info-value address">C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Creation Date</div>
+                    <div class="info-value">February 26, 2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-key"></i> Key Addresses</h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Mint Authority</div>
+                    <div class="info-value address">gatjfhkDK5deuKFqhqQwew76qRypzd3MyuyA2D9qQ8V</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Update Authority</div>
+                    <div class="info-value address">gatjfhkDK5deuKFqhqQwew76qRypzd3MyuyA2D9qQ8V</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Main Wallet</div>
+                    <div class="info-value address">B9rzAwp28tvhURqjv12XvdT1oqbcnhAi72Ar39WQVQ8V</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Primary Token Account</div>
+                    <div class="info-value address">EwpfD3XS2uycHoZGvZp9dFixmq6bEQrkWBg64MQ2GGKb</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-search"></i> Monitoring Links</h2>
+            
+            <ul class="links-list">
+                <li>
+                    <i class="fas fa-chart-pie"></i>
+                    <div>
+                        <div class="link-title">Token Overview</div>
+                        <div class="link-desc">Shows total supply, holders, and transactions</div>
+                        <a href="https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP" target="_blank">https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP</a>
+                    </div>
+                </li>
+                
+                <li>
+                    <i class="fas fa-wallet"></i>
+                    <div>
+                        <div class="link-title">Main Wallet Balance</div>
+                        <div class="link-desc">Shows your SOL balance and all tokens held</div>
+                        <a href="https://solscan.io/account/B9rzAwp28tvhURqjv12XvdT1oqbcnhAi72Ar39WQVQ8R" target="_blank">https://solscan.io/account/B9rzAwp28tvhURqjv12XvdT1oqbcnhAi72Ar39WQVQ8R</a>
+                    </div>
+                </li>
+                
+                <li>
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <div class="link-title">Token Holders</div>
+                        <div class="link-desc">Lists all accounts holding your token</div>
+                        <a href="https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP#holders" target="_blank">https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP#holders</a>
+                    </div>
+                </li>
+                
+                <li>
+                    <i class="fas fa-exchange-alt"></i>
+                    <div>
+                        <div class="link-title">Token Transfers</div>
+                        <div class="link-desc">Shows all transfer history</div>
+                        <a href="https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP#txs" target="_blank">https://solscan.io/token/C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP#txs</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-file-code"></i> Metadata</h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">View Metadata JSON</div>
+                    <div class="info-value">
+                        <a href="https://ipfs.io/ipfs/bafkreigbxxjd2ghndr53nsbfbu2w2gh7vv7hqe52x5biffyigvokevmdxa" target="_blank">View on IPFS</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">View Token Image</div>
+                    <div class="info-value">
+                        <a href="https://ipfs.io/ipfs/bafybeibjh6bvqn7tntxnuisx3a6no4ncf2x5cdbm3e3uv2acgv4evalat4" target="_blank">View on IPFS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-terminal"></i> Management Commands</h2>
+            
+            <div class="command-section">
+                <div class="command">
+                    <div class="command-title">Check Token Information</div>
+                    <code>spl-token display C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP</code>
+                </div>
+                
+                <div class="command">
+                    <div class="command-title">Check Your Balance</div>
+                    <code>solana config set --keypair ~/solana/gating-coin/main-wallet.json<br>
+                    spl-token accounts</code>
+                </div>
+                
+                <div class="command">
+                    <div class="command-title">Transfer Tokens (to new recipient)</div>
+                    <code>spl-token transfer C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP 100 RECIPIENT_ADDRESS --fund-recipient</code>
+                </div>
+                
+                <div class="command">
+                    <div class="command-title">Transfer Tokens (to existing holder)</div>
+                    <code>spl-token transfer C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP 100 RECIPIENT_ADDRESS</code>
+                </div>
+                
+                <div class="command">
+                    <div class="command-title">Disable Mint Authority (caps supply permanently)</div>
+                    <code>solana config set --keypair gatjfhkDK5deuKFqhqQwew76qRypzd3MyuyA2D9qQ8V.json<br>
+                    spl-token authorize C4MFyyv8qNduKQS4qT9ttaLXpEhpMWVujbqCyceAyLhP mint --disable</code>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>GatingAI Token (GATAI) Official Report • Generated on February 26, 2025</p>
+            <p>A Solana SPL Token on Mainnet</p>
+        </footer>
+    </div>
+</body>
+</html>
